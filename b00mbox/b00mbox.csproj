@@ -50,11 +50,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Hammock.WindowsPhone">
-      <HintPath>..\..\myTube\myTube\Bin\Debug\Hammock.WindowsPhone.dll</HintPath>
+    <Reference Include="Hammock.WindowsPhone.Mango">
+      <HintPath>..\packages\Hammock.1.3.1\lib\sl4-wp71\Hammock.WindowsPhone.Mango.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib.WindowsPhone">
-      <HintPath>..\..\myTube\myTube\Bin\Debug\ICSharpCode.SharpZipLib.WindowsPhone.dll</HintPath>
+      <HintPath>..\packages\Hammock.1.3.1\lib\sl4-wp71\ICSharpCode.SharpZipLib.WindowsPhone.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Controls.Toolkit">
@@ -77,7 +77,7 @@
       <HintPath>..\packages\MyToolkit.Extended.1.17.0\lib\sl4-wp71\MyToolkit.Extended.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json.WindowsPhone">
-      <HintPath>..\..\myTube\myTube\Bin\Debug\Newtonsoft.Json.WindowsPhone.dll</HintPath>
+      <HintPath>Newtonsoft.Json.WindowsPhone.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp.WindowsPhone">
       <HintPath>..\packages\RestSharp.104.1\lib\sl4-wp71\RestSharp.WindowsPhone.dll</HintPath>
@@ -193,6 +193,5 @@
   </Target>
   -->
   <ProjectExtensions />
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.7\tools\Microsoft.Bcl.Build.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
 </Project>
