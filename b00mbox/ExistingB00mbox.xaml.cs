@@ -35,8 +35,7 @@ namespace b00mbox
 
         private void existingUrlBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(!String.IsNullOrWhiteSpace(existingUrlBox.Text))
-                sendBtn.IsEnabled = true;
+            sendBtn.IsEnabled = !String.IsNullOrWhiteSpace(existingUrlBox.Text);
         }
 
         private void getTexts(Object o)
@@ -87,18 +86,6 @@ namespace b00mbox
         private void webBrowser_Navigated(object sender, NavigationEventArgs e)
         {
             ThreadPool.QueueUserWorkItem(getTexts);
-        }
-
-        private void pasteBtn_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                existingUrlBox.Text = Clipboard.GetText();
-            }
-            catch(Exception)
-            {
-
-            }
         }
     }
 }
