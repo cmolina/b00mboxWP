@@ -27,13 +27,13 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <TextBlock Name="blockEmptyList"
                        Style="{StaticResource PhoneTextGroupHeaderStyle}"
                        Text="It's lonely here. 
                        Add a couple of songs to your b00mbox." 
                        TextWrapping="Wrap" />
-            <ListBox x:Name="b00mboxList" HorizontalContentAlignment="Stretch" Margin="12,41,12,12" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="b00mboxList_SelectionChanged">
+            <ListBox x:Name="b00mboxList" HorizontalContentAlignment="Stretch" Margin="12" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="b00mboxList_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -41,16 +41,16 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
-                            <Image Source="{Binding Thumbnail}" MaxWidth="150" Grid.Column="0" />
-                            <StackPanel Grid.Column="1">
-                                <TextBlock Text="{Binding Name}" Margin="3" FontSize="20" />
+                            <Image Source="{Binding Thumbnail}" Width="150" MaxHeight="84" Grid.Column="0" HorizontalAlignment="Center" />
+                            <StackPanel Grid.Column="1" Margin="10">
+                                <TextBlock Text="{Binding Name}" Margin="3" FontSize="17" TextWrapping="Wrap" FontWeight="Bold" />
                                 <TextBlock Text="{Binding Id}" FontSize="10" />
                             </StackPanel>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-        </StackPanel>
+        </Grid>
     </Grid>
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">

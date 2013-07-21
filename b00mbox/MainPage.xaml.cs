@@ -76,6 +76,8 @@ namespace b00mbox
                 state.Remove("viewURL");
                 state.Remove("name");
             }
+            // Always unselect the b00mbox selected
+            b00mboxList.SelectedIndex = -1;
             base.OnNavigatedTo(e);
         }
 

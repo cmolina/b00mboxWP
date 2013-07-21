@@ -32,7 +32,7 @@
                        Style="{StaticResource PhoneTextGroupHeaderStyle}"
                        Text="It's lonely here. Consider creating a new b00mbox, or to paste the URL of an existing b00mbox." 
                        TextWrapping="Wrap" />
-            <ListBox x:Name="b00mboxList" HorizontalContentAlignment="Stretch" Margin="12,41,12,12" SelectionChanged="b00mboxList_SelectionChanged">
+            <ListBox x:Name="b00mboxList" HorizontalContentAlignment="Stretch" Margin="12" SelectionChanged="b00mboxList_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Margin="5, 15">
