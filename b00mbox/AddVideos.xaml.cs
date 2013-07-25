@@ -87,7 +87,9 @@ namespace b00mbox
             if (lbHasil.SelectedIndex != -1)
             {
                 vidUri = Uris[lbHasil.SelectedIndex].ToString();
-                state["title"] = titles[lbHasil.SelectedIndex].ToString();
+                string title = titles[lbHasil.SelectedIndex].ToString();
+                title = title.Replace("", "");
+                state["titles"] = titles[lbHasil.SelectedIndex].ToString(); ;
                 NavigationService.Navigate(new Uri("/B00mboxView.xaml?vid=" + vidUri, UriKind.Relative));
             }
         }

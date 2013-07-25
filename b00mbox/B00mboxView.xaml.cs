@@ -87,10 +87,9 @@ namespace b00mbox
             i = e.Result.IndexOf(str) + str.Length;
             j = e.Result.IndexOf("];", i);
             var videosNames = e.Result.Substring(i, j - i + 1).Split(',');
-
             for (int v = 0; v < videosId.Length; v++)
             {
-                listOfSongs.Add(new Song() { Id = videosId[v], Name=videosNames[v] });
+                listOfSongs.Add(new Song() { Id = videosId[v], Name=videosNames[v].Replace("'"," ") });
             }
         }
 
