@@ -89,7 +89,7 @@ namespace b00mbox
             var videosNames = e.Result.Substring(i, j - i + 1).Split(',');
             for (int v = 0; v < videosId.Length; v++)
             {
-                listOfSongs.Add(new Song() { Id = videosId[v], Name=videosNames[v].Replace("'"," ") });
+                listOfSongs.Add(new Song() { Id = videosId[v].Replace("'", " "), Name = videosNames[v].Replace("'", " ") });
             }
         }
 
@@ -133,7 +133,7 @@ namespace b00mbox
             if(e.AddedItems.Count > 0)
             {
                 var selection = e.AddedItems[0] as Song;
-                YouTube.Play(selection.Id.Substring(1, selection.Id.Length-2));
+                YouTube.Play(selection.Id.Substring(1, selection.Id.Length-2),YouTubeQuality.Quality480P);
             }
         }
     }
