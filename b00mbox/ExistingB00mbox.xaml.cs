@@ -53,8 +53,15 @@ namespace b00mbox
                         state["contributorsURL"] = url;
                         // Get the view URL
                         var script = "document.getElementsByTagName('input')[4].value";
-                        var viewURL = webBrowser.InvokeScript("eval", script) as String;
-                        state["viewURL"] = viewURL;
+                        try
+                        {
+                            var viewURL = webBrowser.InvokeScript("eval", script) as String;
+                            state["viewURL"] = viewURL;
+                        }
+                        catch(Exception)
+                        {
+                            state["viewURL"] = null;
+                        }
                         // Get the name
                         script = "document.querySelectorAll('html body div div.coolfont form#thisform div')[0].innerHTML.trim()";
                         var name = webBrowser.InvokeScript("eval", script) as String;

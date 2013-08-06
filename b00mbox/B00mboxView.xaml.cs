@@ -11,6 +11,7 @@ using System.Threading;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using MyToolkit.Multimedia;
+using RestSharp;
 
 namespace b00mbox
 {
@@ -47,12 +48,42 @@ namespace b00mbox
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            b00mbox = PhoneApplicationService.Current.State["b00mbox"] as B00mbox;
-            b00mboxNameBlock.Text = b00mbox.Name;
-
-            ThreadPool.QueueUserWorkItem(getSongs);
+            var newB00mbox = PhoneApplicationService.Current.State["b00mbox"] as B00mbox;
+            if (b00mbox != newB00mbox)
+            {
+                b00mbox = newB00mbox;
+                b00mboxNameBlock.Text = b00mbox.Name;
+                ThreadPool.QueueUserWorkItem(getSongs);
+            }
+            else if (PhoneApplicationService.Current.State.ContainsKey("vid"))
+            {
+                var vid = PhoneApplicationService.Current.State["vid"] as string;
+                addVideo(vid);
+            }
 
             base.OnNavigatedTo(e);
+        }
+
+        private void addVideo(string vid)
+        {
+            var client = new RestClient();
+            var request = new RestRequest(b00mbox.ContributorsURL, Method.POST);
+            request.AddHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+            request.AddHeader("Accept-Encoding", "gzip, deflate");
+            request.AddHeader("Host", "b00mbox.com");
+            request.AddHeader("Referer", b00mbox.ContributorsURL);
+            request.AddParameter("_submit_check", "Submit Check");
+            request.AddParameter("linkurl", vid);
+            request.AddParameter("submit.x", 0);
+            request.AddParameter("submit.y", 0);
+            request.AddParameter("vidurl", vid);
+
+            var response = client.ExecuteAsync(request, (r, a) =>
+            {
+                if (r.ResponseStatus == ResponseStatus.Completed)
+                    // Get the songs again
+                    ThreadPool.QueueUserWorkItem(getSongs);
+            });
         }
 
         private void getSongs(Object o)
@@ -62,7 +93,22 @@ namespace b00mbox
             {
                 try
                 {
-                    
+                    if (b00mbox.ViewURL == null)
+                    {
+                        // Get the view url from the contributor's URL
+                        var client = new RestClient();
+                        var request = new RestRequest(b00mbox.ContributorsURL);
+                        var async = client.ExecuteAsync(request, (r, a) =>
+                        {
+                            if (r.ResponseStatus == ResponseStatus.Completed)
+                            {
+                                var document = new HtmlAgilityPack.HtmlDocument();
+                                document.LoadHtml(r.Content);
+                                var viewURL = document.DocumentNode.Descendants("input").ElementAt(4).GetAttributeValue("value", "");
+                                b00mbox.ViewURL = viewURL;
+                            }
+                        });
+                    }
                     WebClient wc1 = new WebClient();
                     while (wc1.IsBusy) ;
                     wc1.DownloadStringCompleted += wc1_DownloadStringCompleted;
@@ -88,6 +134,7 @@ namespace b00mbox
             j = e.Result.IndexOf("];", i);
             var videosNames = e.Result.Substring(i, j - i + 1).Split(',');
 
+            listOfSongs.Clear();
             for (int v = 0; v < videosId.Length; v++)
             {
                 listOfSongs.Add(new Song() { Id = videosId[v], Name=videosNames[v] });

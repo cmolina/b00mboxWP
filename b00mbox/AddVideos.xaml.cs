@@ -72,11 +72,11 @@ namespace b00mbox
         public void wc_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs c)
         {
             var o = JObject.Parse(c.Result);
-            var videos = from v in o["data"]["items"].Children() select new ydata { title = (string)v["title"], description = (string)v["description"], thumbnail = (string)v["thumbnail"]["sqDefault"], mobile = (string)v["content"]["6"] };
+            var videos = from v in o["data"]["items"].Children() select new ydata { url = "http://www.youtube.com/watch?v="+(string)v["id"], title = (string)v["title"], description = (string)v["description"], thumbnail = (string)v["thumbnail"]["sqDefault"], mobile = (string)v["content"]["6"] };
             lbHasil.ItemsSource = videos;
             foreach (var vid in videos)
             {
-                Uris.Add(vid.mobile);
+                Uris.Add(vid.url);
                 titles.Add(vid.title);
             }
         }
@@ -86,15 +86,17 @@ namespace b00mbox
             var state = PhoneApplicationService.Current.State;
             if (lbHasil.SelectedIndex != -1)
             {
-                vidUri = Uris[lbHasil.SelectedIndex].ToString();
-                state["title"] = titles[lbHasil.SelectedIndex].ToString();
-                NavigationService.Navigate(new Uri("/B00mboxView.xaml?vid=" + vidUri, UriKind.Relative));
+                vidUri = Uris[lbHasil.SelectedIndex];
+                state["title"] = titles[lbHasil.SelectedIndex];
+                state["vid"] = vidUri;
+                NavigationService.GoBack();
             }
         }
     }
 
     public class ydata
     {
+        public string url { get; set; }
         public string mobile { get; set; }
         public string title { get; set; }
         public string thumbnail { get; set; }
