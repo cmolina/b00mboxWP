@@ -14,7 +14,6 @@ namespace b00mbox
     public partial class ExistingB00mbox : PhoneApplicationPage
     {
         IDictionary<string, object> state;
-        static Mutex m = new Mutex(true, "obtaining parameters");
 
         public ExistingB00mbox()
         {
@@ -35,7 +34,10 @@ namespace b00mbox
 
         private void existingUrlBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            sendBtn.IsEnabled = !String.IsNullOrWhiteSpace(existingUrlBox.Text);
+            var proposedUri = existingUrlBox.Text;
+            
+            sendBtn.IsEnabled = !String.IsNullOrWhiteSpace(proposedUri) &&
+                Uri.IsWellFormedUriString(proposedUri, UriKind.Absolute);
         }
 
         private void getTexts(Object o)
@@ -93,6 +95,14 @@ namespace b00mbox
         private void webBrowser_Navigated(object sender, NavigationEventArgs e)
         {
             ThreadPool.QueueUserWorkItem(getTexts);
+        }
+
+        private void existingUrlBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            var proposedUri = existingUrlBox.Text;
+
+            if (String.IsNullOrWhiteSpace(proposedUri))
+                existingUrlBox.Text = "http://";
         }
     }
 }

@@ -30,7 +30,8 @@
         <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <TextBlock Text="ADD AN EXISTING B0MMBOX URL HERE"/>
             <TextBox Name="existingUrlBox"
-                     TextChanged="existingUrlBox_TextChanged" />
+                     Text="http://"
+                     TextChanged="existingUrlBox_TextChanged" LostFocus="existingUrlBox_LostFocus" />
             <Button Name="sendBtn"
                     Content="Add"
                     IsEnabled="False"

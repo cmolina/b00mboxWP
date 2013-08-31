@@ -9,7 +9,7 @@
 
     <!--Application Resources-->
     <Application.Resources>
-        <system:String x:Key="AppNameString">b00mmbox</system:String>
+        <system:String x:Key="AppNameString">B00MBOX</system:String>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

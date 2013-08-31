@@ -67,13 +67,14 @@ namespace b00mbox
                     // We are in the Contributors' page
                     var contributorsURL = webBrowser.Source.AbsolutePath;
                     var script = "document.getElementsByTagName('input')[4].value";
-                    var viewURL = webBrowser.InvokeScript("eval", script) as String;
+                    var viewURL = evalJavascript(script) as String;
                     script = "document.querySelectorAll('html body div div.coolfont form#thisform div')[0].innerHTML.trim()";
-                    var name = webBrowser.InvokeScript("eval", script) as String;
+                    var name = evalJavascript(script) as String;
 
                     // Add this b00mbox to the list
+                    var b00mboxs = PhoneApplicationService.Current.State["b00mboxs"] as ObservableCollection<B00mbox>;
                     actual = new B00mbox(name, contributorsURL, viewURL);
-                    (PhoneApplicationService.Current.State["b00mboxs"] as ObservableCollection<B00mbox>).Add(actual);
+                    b00mboxs.Add(actual);
 
                     NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
                 }

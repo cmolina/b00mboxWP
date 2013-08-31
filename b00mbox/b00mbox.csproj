@@ -179,7 +179,6 @@
     <Content Include="Images\cancel.png" />
     <Content Include="Images\check.png" />
     <Content Include="Images\next.png" />
-    <Content Include="README_FIRST.txt" />
     <Content Include="SplashScreenImage.jpg" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
