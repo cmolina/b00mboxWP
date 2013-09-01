@@ -32,7 +32,7 @@ namespace b00mbox
                 var setName = "document.getElementsByTagName('input')[0].value = \"" + name + "\"";
                 var description = boxDescription.Text;
                 var setDescription = "document.getElementsByTagName('textarea')[0].value = \"" + description + "\"";
-                var contributors = acbContributors.Text;
+                var contributors = boxContributors.Text;
                 var setContributors = "document.getElementsByTagName('textarea')[1].value = \"" + contributors + "\"";
                 evalJavascript(setName);
                 evalJavascript(setDescription);
@@ -47,7 +47,8 @@ namespace b00mbox
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message, "Something happened", MessageBoxButton.OK);
+                NavigationService.GoBack();
             }
 
         }
@@ -65,18 +66,18 @@ namespace b00mbox
                 try
                 {
                     // We are in the Contributors' page
-                    var contributorsURL = webBrowser.Source.AbsolutePath;
-                    var script = "document.getElementsByTagName('input')[4].value";
-                    var viewURL = evalJavascript(script) as String;
-                    script = "document.querySelectorAll('html body div div.coolfont form#thisform div')[0].innerHTML.trim()";
+                    var contributorsURL = webBrowser.Source.ToString();
+                    
+                    var script = "document.querySelector('html body div div.coolfont form#thisform div').innerHTML.trim()";
                     var name = evalJavascript(script) as String;
+                    name = name.Substring(name.IndexOf(": ") + 2);
 
                     // Add this b00mbox to the list
-                    var b00mboxs = PhoneApplicationService.Current.State["b00mboxs"] as ObservableCollection<B00mbox>;
-                    actual = new B00mbox(name, contributorsURL, viewURL);
-                    b00mboxs.Add(actual);
+                    var state = PhoneApplicationService.Current.State;
+                    state["name"] = name;
+                    state["contributorsURL"] = contributorsURL;
 
-                    NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+                    NavigationService.GoBack();
                 }
                 catch (Exception ex)
                 {
@@ -95,7 +96,7 @@ namespace b00mbox
             // enable/disable send button
             var btn = (ApplicationBarIconButton)ApplicationBar.Buttons[1];
             btn.IsEnabled = !(String.IsNullOrWhiteSpace(boxName.Text) ||
-                String.IsNullOrWhiteSpace(boxDescription.Text) || String.IsNullOrWhiteSpace(acbContributors.Text));
+                String.IsNullOrWhiteSpace(boxDescription.Text));
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

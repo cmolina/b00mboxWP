@@ -60,10 +60,11 @@ namespace b00mbox
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
+            // We come from the 'existing b00mbox' or the 'new b00mbox' page
             if (state.ContainsKey("contributorsURL") || state.ContainsKey("viewURL"))
             {
                 var contributorsURL = state.ContainsKey("contributorsURL") ? state["contributorsURL"] as String : String.Empty;
-                var viewURL = state["viewURL"] as String;
+                var viewURL = state.ContainsKey("viewURL") ? state["viewURL"] as String : String.Empty;
                 var name = state["name"] as String; 
                 
                 // Add the b00mbox to the list
@@ -71,14 +72,18 @@ namespace b00mbox
                 b00mboxs.Add(b00mbox);
                 settings["b00mboxs"] = b00mboxs;
                 settings.Save();
+
                 // Remove the parameters from the state
                 if (state.ContainsKey("contributorsURL")) state.Remove("contributorsURL");
                 state.Remove("viewURL");
                 state.Remove("name");
             }
+
             // Always unselect the b00mbox selected
             b00mboxList.SelectedIndex = -1;
             base.OnNavigatedTo(e);
+
+            
         }
 
         private void b00mboxList_SelectionChanged(object sender, SelectionChangedEventArgs e)

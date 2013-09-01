@@ -105,15 +105,28 @@ namespace b00mbox
                             {
                                 var document = new HtmlAgilityPack.HtmlDocument();
                                 document.LoadHtml(r.Content);
-                                var viewURL = document.DocumentNode.Descendants("input").ElementAt(4).GetAttributeValue("value", "");
-                                b00mbox.ViewURL = viewURL;
+
+                                var inputs = document.DocumentNode.Descendants("input");
+                                var viewUrlIndex = 4;
+                                if (inputs.Count() > viewUrlIndex)
+                                {
+                                    var viewURL = inputs.ElementAt(viewUrlIndex).GetAttributeValue("value", "");
+                                    b00mbox.ViewURL = viewURL;
+
+                                    // Now we have the View URI, try to look for the songs again
+                                    ThreadPool.QueueUserWorkItem(getSongs);
+                                }
                             }
                         });
                     }
-                    WebClient wc1 = new WebClient();
-                    while (wc1.IsBusy) ;
-                    wc1.DownloadStringCompleted += wc1_DownloadStringCompleted;
-                    wc1.DownloadStringAsync(new Uri(b00mbox.ViewURL, UriKind.Absolute));
+                    else
+                    {
+                        // If we have the View URI, we have the videos
+                        WebClient wc1 = new WebClient();
+                        while (wc1.IsBusy) ;
+                        wc1.DownloadStringCompleted += wc1_DownloadStringCompleted;
+                        wc1.DownloadStringAsync(new Uri(b00mbox.ViewURL, UriKind.Absolute));
+                    }
 
                 }
                 catch (Exception)

@@ -24,23 +24,21 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock x:Name="ApplicationTitle" Text="{StaticResource AppNameString}" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="step 1/2" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock x:Name="PageTitle" Text="create new" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBlock Text="Name" Style="{StaticResource PhoneTextSubtleStyle}" />
+            <TextBlock Text="Name*" Style="{StaticResource PhoneTextSubtleStyle}" />
             <TextBox Name="boxName" 
                      TextChanged="box_TextChanged" />
 
-            <TextBlock Text="Description" Style="{StaticResource PhoneTextSubtleStyle}" />
+            <TextBlock Text="Description*" Style="{StaticResource PhoneTextSubtleStyle}" />
             <TextBox Name="boxDescription" 
                      TextChanged="box_TextChanged" />
 
-            <TextBlock Text="Contributors" Style="{StaticResource PhoneTextSubtleStyle}" />
-            <toolkit:AutoCompleteBox x:Name="acbContributors" 
-                                     InputScope="EmailUserName"
-                                     TextChanged="box_TextChanged" Margin="-3,0,3,0" />
+            <TextBlock Text="Directions to Contributors?" Style="{StaticResource PhoneTextSubtleStyle}" />
+            <TextBox Name="boxContributors" />
         </StackPanel>
         <phone:WebBrowser Name="webBrowser" 
                           Grid.Row="2"
