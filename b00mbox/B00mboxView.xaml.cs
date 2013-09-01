@@ -55,10 +55,11 @@ namespace b00mbox
                 b00mboxNameBlock.Text = b00mbox.Name;
                 ThreadPool.QueueUserWorkItem(getSongs);
             }
-            else if (PhoneApplicationService.Current.State.ContainsKey("vid"))
+            if (PhoneApplicationService.Current.State.ContainsKey("vid"))
             {
                 var vid = PhoneApplicationService.Current.State["vid"] as string;
                 addVideo(vid);
+                PhoneApplicationService.Current.State.Remove("vid");
             }
 
             base.OnNavigatedTo(e);
@@ -132,12 +133,29 @@ namespace b00mbox
             str = "var videoTitles = [";
             i = e.Result.IndexOf(str) + str.Length;
             j = e.Result.IndexOf("];", i);
-            var videosNames = e.Result.Substring(i, j - i + 1).Split(',');
-
+            str = e.Result.Substring(i, j - i + 1);
+            var videosNames = new string[videosId.Length];
+            for (int k = 0, length = videosNames.Length, quotePos = 0; k < length; k++)
+            {
+                var firstQuote = str.IndexOf('\'', quotePos);
+                var nextQuote = str.IndexOf('\'', firstQuote + 1);
+                videosNames[k] = str.Substring(firstQuote + 1, nextQuote - firstQuote - 1);
+                quotePos = nextQuote + 1;
+            }
+            
             listOfSongs.Clear();
             for (int v = 0; v < videosId.Length; v++)
             {
-                listOfSongs.Add(new Song() { Id = videosId[v].Replace("'", " "), Name = videosNames[v].Replace("'", " ") });
+                var id = videosId[v].Replace("'", "");
+                var name = HttpUtility.HtmlDecode(videosNames[v]);
+                if (string.IsNullOrEmpty(name))
+                    name = "Loading...";
+
+                listOfSongs.Add(
+                    new Song() { 
+                        Id = id, 
+                        Name = name }
+                    );
             }
         }
 
@@ -158,12 +176,12 @@ namespace b00mbox
             }
             public String Thumbnail
             {
-                get { return "http://img.youtube.com/vi/" + Id.Substring(1, _id.Length - 2) + "/mqdefault.jpg"; }
+                get { return "http://img.youtube.com/vi/" + _id + "/mqdefault.jpg"; }
             }
 
             public string YoutubeURL()
             {
-                return "http://www.youtube.com/watch?v=" + Id.Substring(1, _id.Length-2);
+                return "http://www.youtube.com/watch?v=" + _id;
             }
 
             public event PropertyChangedEventHandler PropertyChanged;
@@ -181,7 +199,7 @@ namespace b00mbox
             if(e.AddedItems.Count > 0)
             {
                 var selection = e.AddedItems[0] as Song;
-                YouTube.Play(selection.Id.Substring(1, selection.Id.Length-2),YouTubeQuality.Quality480P);
+                YouTube.Play(selection.Id, YouTubeQuality.Quality480P);
             }
         }
     }

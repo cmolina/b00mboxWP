@@ -103,7 +103,7 @@ namespace b00mbox
         public String Name
         {
             get { return _name; }
-            set { if (value != _name) { NotifyPropertyChanged("Name"); _name = value.Substring(value.IndexOf(": ")+2); } }
+            set { if (value != _name) { NotifyPropertyChanged("Name"); _name = value; } }
         }
         [DataMember]
         public String ContributorsURL
