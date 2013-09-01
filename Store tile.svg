@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="62"
+   height="62"
+   id="svg3070"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   inkscape:export-filename="C:\Users\Carlos\Windows Phone\Cursos\Avanzado\b00mbox\b00mbox\Background.png"
+   inkscape:export-xdpi="251.13"
+   inkscape:export-ydpi="251.13"
+   sodipodi:docname="Store tile.svg">
+  <defs
+     id="defs3072" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.959798"
+     inkscape:cx="-12.314104"
+     inkscape:cy="55.70406"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1304"
+     inkscape:window-height="745"
+     inkscape:window-x="54"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3075">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Capa"
+     style="display:inline">
+    <rect
+       style="fill:#ffffff;fill-opacity:0"
+       id="rect3090"
+       width="62"
+       height="62"
+       x="0"
+       y="1.1847294e-014" />
+    <rect
+       style="fill:#cccccc;fill-opacity:1;stroke:#cccccc;stroke-width:5.02689028;stroke-miterlimit:6;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3000"
+       width="56.97311"
+       height="56.97311"
+       x="2.5134451"
+       y="2.5134447" />
+  </g>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-990.36218)"
+     style="display:inline">
+    <path
+       sodipodi:type="arc"
+       style="fill:#b4e30d;fill-opacity:1;stroke:#000000;stroke-width:5.0999999;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path3755"
+       sodipodi:cx="31.819805"
+       sodipodi:cy="28.033621"
+       sodipodi:rx="27.02158"
+       sodipodi:ry="26.137697"
+       d="m 58.841385,28.033621 a 27.02158,26.137697 0 1 1 -54.0431596,0 27.02158,26.137697 0 1 1 54.0431596,0 z"
+       transform="matrix(0.81041828,0,0,0.83782369,5.2126482,997.87495)" />
+    <text
+       xml:space="preserve"
+       style="font-size:38.40000153px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="21.0175"
+       y="1032.5448"
+       id="text3768"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3770"
+         x="21.0175"
+         y="1032.5448"
+         style="font-size:30.72000122px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Segoe WP;-inkscape-font-specification:Segoe WP Bold">b</tspan></text>
+  </g>
+</svg>

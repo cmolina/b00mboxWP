@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1000"
+   height="800"
+   id="svg3070"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   inkscape:export-filename="C:\Users\Carlos\Windows Phone\Cursos\Avanzado\b00mbox\Background.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   sodipodi:docname="Background.svg">
+  <defs
+     id="defs3072">
+    <linearGradient
+       id="linearGradient3819">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop3821" />
+      <stop
+         id="stop3827"
+         offset="0.5"
+         style="stop-color:#aee30d;stop-opacity:0;" />
+      <stop
+         style="stop-color:#b4e30d;stop-opacity:1;"
+         offset="1"
+         id="stop3823" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3921">
+      <stop
+         style="stop-color:#094263;stop-opacity:1;"
+         offset="0"
+         id="stop3923" />
+      <stop
+         style="stop-color:#07324b;stop-opacity:1;"
+         offset="1"
+         id="stop3925" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3819"
+       id="radialGradient3825"
+       cx="500.00001"
+       cy="-338"
+       fx="500.00001"
+       fy="-338"
+       r="500.00001"
+       gradientTransform="matrix(1,0,0,0.80000001,0,-67.599998)"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="361.37394"
+     inkscape:cy="279.1595"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer2"
+     showgrid="false"
+     inkscape:window-width="1304"
+     inkscape:window-height="745"
+     inkscape:window-x="54"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3075">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Capa"
+     style="display:inline"
+     transform="translate(0,738)">
+    <rect
+       style="fill:url(#radialGradient3825);fill-opacity:1;stroke:#000000;stroke-width:7.0191946;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3049"
+       width="992.98083"
+       height="792.98083"
+       x="3.5095973"
+       y="-734.49042" />
+  </g>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-252.36218)"
+     style="display:inline">
+    <path
+       sodipodi:type="arc"
+       style="fill:#b4e30d;fill-opacity:1;stroke:#000000;stroke-width:5.0999999;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
+       id="path3755"
+       sodipodi:cx="31.819805"
+       sodipodi:cy="28.033621"
+       sodipodi:rx="27.02158"
+       sodipodi:ry="26.137697"
+       d="m 58.841385,28.033621 a 27.02158,26.137697 0 1 1 -54.0431596,0 27.02158,26.137697 0 1 1 54.0431596,0 z"
+       transform="matrix(2.5325571,0,0,2.6181986,419.31688,498.7111)" />
+    <text
+       xml:space="preserve"
+       style="font-size:119.99997711px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Sans"
+       x="468.70697"
+       y="607.05408"
+       id="text3768"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3770"
+         x="468.70697"
+         y="607.05408"
+         style="font-size:95.99998474px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Segoe WP;-inkscape-font-specification:Segoe WP Bold">b</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Sans"
+       x="499.53119"
+       y="713.34741"
+       id="text3010"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3012"
+         x="505.07806"
+         y="713.34741"
+         style="-inkscape-font-specification:Segoe WP Bold;font-family:Segoe WP;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal">The first b00mbox client </tspan><tspan
+         sodipodi:role="line"
+         x="499.53119"
+         y="763.34741"
+         id="tspan3014"
+         style="-inkscape-font-specification:Segoe WP Bold;font-family:Segoe WP;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal">for Windows Phone</tspan></text>
+  </g>
+</svg>
