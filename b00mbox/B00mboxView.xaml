@@ -33,7 +33,8 @@
                        Text="It's lonely here. 
                        Add a couple of songs to your b00mbox." 
                        TextWrapping="Wrap" />
-            <ListBox x:Name="b00mboxList" HorizontalContentAlignment="Stretch" Margin="12" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="b00mboxList_SelectionChanged">
+            <ListBox Name="b00mboxList" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Margin="12" ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                     SelectionChanged="b00mboxList_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>

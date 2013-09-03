@@ -22,7 +22,7 @@ namespace b00mbox
 
         public B00mboxView()
         {
-            InitializeComponent();
+            InitializeComponent(); 
             listOfSongs = new ObservableCollection<Song>();
             listOfSongs.CollectionChanged += listOfSongs_CollectionChanged;
             b00mboxList.ItemsSource = listOfSongs;
@@ -141,12 +141,12 @@ namespace b00mbox
             var str = "var videos = [";
             var i = e.Result.IndexOf(str) + str.Length;
             var j = e.Result.IndexOf("];", i);
-            var videosId = e.Result.Substring(i, j - i + 1).Split(',');
+            var videosId = e.Result.Substring(i, j - i).Split(',');
 
             str = "var videoTitles = [";
             i = e.Result.IndexOf(str) + str.Length;
             j = e.Result.IndexOf("];", i);
-            str = e.Result.Substring(i, j - i + 1);
+            str = e.Result.Substring(i, j - i);
             var videosNames = new string[videosId.Length];
             for (int k = 0, length = videosNames.Length, quotePos = 0; k < length; k++)
             {
@@ -157,18 +157,38 @@ namespace b00mbox
             }
             
             listOfSongs.Clear();
+            Song lastSong = null;
             for (int v = 0; v < videosId.Length; v++)
             {
                 var id = videosId[v].Replace("'", "");
+
+                // Avoid repeated songs
+                if (lastSong != null && lastSong.Id == id)
+                    continue;
+
                 var name = HttpUtility.HtmlDecode(videosNames[v]);
                 if (string.IsNullOrEmpty(name))
+                {
                     name = "Loading...";
+                    AddVideos.YoutubeGetNameCompleted += (_i, _n) =>
+                    {
+                        var indexVideo = listOfSongs.FirstOrDefault(_v => _v.Id == _i);
+                        if (indexVideo != null)
+                            indexVideo.Name = _n;
+                    };
+                    try
+                    {
+                        AddVideos.YoutubeGetName(id);
+                    }
+                    catch (Exception) { };
+                }
 
-                listOfSongs.Add(
-                    new Song() { 
-                        Id = id, 
-                        Name = name }
-                    );
+                lastSong = new Song()
+                {
+                    Id = id,
+                    Name = name
+                }; 
+                listOfSongs.Add(lastSong);
             }
         }
 
@@ -177,15 +197,15 @@ namespace b00mbox
             string _name;
             string _id;
 
-            public String Name
+            public string Name
             {
                 get { return _name; }
-                set { if (value != _name) NotifyPropertyChanged("Name"); _name = value; }
+                set { NotifyPropertyChanged("Name"); _name = value; }
             }
-            public String Id
+            public string Id
             {
                 get { return _id; }
-                set { if (value != _id) NotifyPropertyChanged("Id"); _id = value; }
+                set { NotifyPropertyChanged("Id"); _id = value; }
             }
             public String Thumbnail
             {

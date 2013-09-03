@@ -14,8 +14,6 @@ namespace b00mbox
 {
     public partial class NewB00mbox : PhoneApplicationPage
     {
-        B00mbox actual;
-
         public NewB00mbox()
         {
             InitializeComponent();
