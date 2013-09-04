@@ -10,11 +10,16 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True">
+    mc:Ignorable="d">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot">
+    	<Grid.Background>
+    		<RadialGradientBrush>
+    			<GradientStop Color="White" Offset="0"/>
+    			<GradientStop Color="#FFB4E30D" Offset="1"/>
+    		</RadialGradientBrush>
+    	</Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -22,20 +27,20 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="{StaticResource AppNameString}" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="add existing" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="{StaticResource AppNameString}" Style="{StaticResource PhoneTextNormalStyle}" Foreground="Black"/>
+            <TextBlock Text="add existing" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Foreground="Black"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBlock Text="ADD AN EXISTING B0MMBOX URL HERE"/>
+            <TextBlock Text="ADD AN EXISTING B0MMBOX URL HERE" Foreground="#7F000000"/>
             <TextBox Name="existingUrlBox"
                      Text="http://"
                      TextChanged="existingUrlBox_TextChanged" LostFocus="existingUrlBox_LostFocus" />
             <Button Name="sendBtn"
                     Content="Add"
                     IsEnabled="False"
-                    Click="sendBtn_Click" />
+                    Click="sendBtn_Click" Foreground="Black" BorderBrush="Black" />
             <phone:WebBrowser Name="webBrowser"
                               Visibility="Collapsed"
                               IsScriptEnabled="True" Navigated="webBrowser_Navigated" />

@@ -10,11 +10,16 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True" d:DesignHeight="696" d:DesignWidth="480">
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot">
+    	<Grid.Background>
+    		<RadialGradientBrush>
+    			<GradientStop Color="White"/>
+    			<GradientStop Color="#FFB4E30D" Offset="1"/>
+    		</RadialGradientBrush>
+    	</Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -22,8 +27,8 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="{StaticResource AppNameString}" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Name="b00mboxNameBlock" Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="{StaticResource AppNameString}" Style="{StaticResource PhoneTextNormalStyle}" Foreground="Black"/>
+            <TextBlock Name="b00mboxNameBlock" Text="page name" Margin="0,-7,0,0"  Style="{StaticResource PhoneTextTitle1Style}" Foreground="Black"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
@@ -32,9 +37,9 @@
                        Style="{StaticResource PhoneTextGroupHeaderStyle}"
                        Text="It's lonely here. 
                        Add a couple of songs to your b00mbox." 
-                       TextWrapping="Wrap" />
+                       TextWrapping="Wrap" Foreground="#7F000000" />
             <ListBox Name="b00mboxList" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Margin="12" ScrollViewer.VerticalScrollBarVisibility="Visible" 
-                     SelectionChanged="b00mboxList_SelectionChanged">
+                     SelectionChanged="b00mboxList_SelectionChanged" Foreground="#7F000000">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>

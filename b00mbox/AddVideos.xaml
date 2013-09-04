@@ -10,11 +10,16 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
-    shell:SystemTray.IsVisible="True">
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot">
+    	<Grid.Background>
+    		<RadialGradientBrush>
+    			<GradientStop Color="White" Offset="0"/>
+    			<GradientStop Color="#FFB4E30D" Offset="1"/>
+    		</RadialGradientBrush>
+    	</Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -22,20 +27,26 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="{StaticResource AppNameString}" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="search youtube" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock x:Name="ApplicationTitle" Text="{StaticResource AppNameString}" Style="{StaticResource PhoneTextNormalStyle}" Foreground="Black"/>
+            <TextBlock x:Name="PageTitle" Text="search youtube" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Foreground="Black"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBox Height="72" HorizontalAlignment="Left" Margin="12,6,0,0" Name="tbSearch" Text="Videos Title" VerticalAlignment="Top" Width="438" Foreground="#55000000" GotFocus="tbSearch_GotFocus"></TextBox>
-            <Button Content="Search" Height="72" HorizontalAlignment="Left" Margin="277,84,0,0" Name="btnSearch" VerticalAlignment="Top" Width="160" Click="btnSearch_Click" />
-            <ListBox Height="439" HorizontalAlignment="Left" Margin="0,162,0,0" Name="lbHasil" VerticalAlignment="Top" Width="456" ItemsSource="{Binding videos}" SelectionChanged="lbHasil_SelectionChanged">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <TextBox Name="tbSearch" Text="Videos Title" Foreground="#55000000" GotFocus="tbSearch_GotFocus" Grid.Row="0" />
+            <Button Content="Search" Name="btnSearch" Click="btnSearch_Click" Foreground="Black" BorderBrush="Black" Grid.Row="1" />
+            <ListBox Name="lbHasil" ItemsSource="{Binding videos}" SelectionChanged="lbHasil_SelectionChanged" Grid.Row="2">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Margin="0,0,0,17" Width="432">
-                            <Image Source="{Binding thumbnail}" Height="200" Width="250" />
-                            <TextBlock Text="{Binding title}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                        <StackPanel Margin="0,0,0,20" Width="432">
+                            <Image Source="{Binding thumbnail}" Height="200" Width="250" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding title}" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="{StaticResource PhoneFontSizeLarge}" Foreground="#FF000000" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
